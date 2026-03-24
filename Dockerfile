@@ -9,4 +9,6 @@ COPY . .
 
 RUN npx prisma generate
 
-CMD ["npm", "run", "start"]
+RUN apk add --no-cache netcat-openbsd
+
+CMD sh -c "echo 'Waiting for database...' && until nc -z booking-db 5432; do sleep 2; done && echo 'Database is up!' && npx prisma migrate deploy && npm run start"

@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User{
+  id Int @id @default(autoincrement())
+  telegramId BigInt @unique
+  username String?
+  firstName String?
+  createdAt DateTime @default(now())
+}
+
+model Admin{
+  id Int @id @default(autoincrement())
+  telegramId BigInt @unique
+  createdAt DateTime @default(now())
+}
+
+model Preset{
+  id Int @id @default(autoincrement())
+  name String
+  times String[]
+  sessions Session[]
+  createdAt DateTime @default(now())
+}
+
+model Session{
+  id Int @id @default(autoincrement())
+  date String
+  time String
+  presetId Int?
+  isBooked Boolean @default(false)
+  bookedBy  BigInt?
+  preset Preset? @relation(fields: [presetId], references: [id])
+  createdAt DateTime @default(now())
+}

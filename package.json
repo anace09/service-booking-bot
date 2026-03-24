@@ -1,0 +1,28 @@
+{
+  "name": "booking-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/bot.ts",
+    "start": "tsx src/bot.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.5.0",
+    "@prisma/client": "^7.5.0",
+    "@types/pg": "^8.20.0",
+    "grammy": "^1.41.1",
+    "pg": "^8.20.0",
+    "prisma": "^7.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "dotenv": "^17.3.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
